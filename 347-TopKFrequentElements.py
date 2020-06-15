@@ -28,7 +28,7 @@ def topKFrequent(nums,k):
         sol.append(B.pop()[0])
     print(sol)
 
-# O(n)? using heap
+# This is wrong
 import heapq
 def topKFrequent2(nums,k):
     A = {}
@@ -43,7 +43,5 @@ def topKFrequent2(nums,k):
         sol.append(heap.pop()[1])
     print(sol)
 
-
-
-arr = [3,3,2,2,1,4,4,4]
-topKFrequent2(arr,3)
+arr = [3,0,1,0]
+topKFrequent2(arr,1)
