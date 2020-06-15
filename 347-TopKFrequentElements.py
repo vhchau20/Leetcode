@@ -14,22 +14,36 @@
 # It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
 # You can return the answer in any order.
 
-
+# O(nlogk) using naive sorting
 def topKFrequent(nums,k):
     A = {}
-    B = [0]*k
     for i in nums:
-        if i in A:
-            continue
-        A[i] = 0
-    for i in nums:
-        A[i] += 1
-    invA = {v: k for k, v in A.items()}
-    listValues = list(invA)
-    decValues = sorted(listValues,reverse=True)
+        A[i] = A.get(i,0) + 1
+    # Sort dict by values in increasing order
+    B = sorted(list(A.items()), key=lambda k:k[1]) # nlogk
+    print("counts:", A)
+    print("dict in increasing order by values", B)
+    sol = []
     for i in range(k):
-        B[i] = invA[decValues[i]]
-    print(A)
-    return(A)
+        sol.append(B.pop()[0])
+    print(sol)
 
-topKFrequent([1,1,1,2,2,3],2)
+# O(n)? using heap
+import heapq
+def topKFrequent2(nums,k):
+    A = {}
+    for i in nums:
+        A[i] = A.get(i,0) + 1
+    heap = []
+    for i in A:
+        heapq.heappush(heap, (A[i],i))
+    print(heap)
+    sol = []
+    for i in range(k):
+        sol.append(heap.pop()[1])
+    print(sol)
+
+
+
+arr = [3,3,2,2,1,4,4,4]
+topKFrequent2(arr,3)
