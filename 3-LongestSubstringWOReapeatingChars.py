@@ -20,40 +20,22 @@
 # subsequence and not a substring.
 
 import collections as c
-# O(n^2)
+# O(n)
 def A(s):
 	sub = ""
-	solns = []
+	ret = 0
 	for i in range(len(s)):
 		if s[i] in sub:
 			j = sub.find(s[i])
 			sub = sub[j+1:]
 		sub += s[i]
-		solns.append(sub)
-	ret = 0
-	for i in solns:
-		if len(i) > ret:
-			ret = len(i)
-	print(solns)
+		if len(sub) > ret:
+			ret = len(sub)
 	return ret
 
-# O(n)
+# O(n) use enumerate()?
 def B(s):
-    longest = 0
-    seen_more = 0
-    chars = {}
-
-    for i, c in enumerate(s):
-    	print((i,c))
-        if c not in chars or chars[c] < seen_more:
-                longest = max(longest, i - seen_more + 1)
-        else:
-            seen_more = chars[c] + 1
-        chars[c] = i
-    return longest
-
-def C(s):
-	sol = 0
+	pass
 
 str1 = "abcabcbb"
 str2 = "bbbbb"
@@ -62,10 +44,4 @@ str4 = "pwwkewwkedw"
 str5 = "abcddefghiiijkdlmaop"
 str6 = "dvdf"
 
-# print(A(str6))
-print(B(str6))
-
-
-
-
-
+print(A(str5))
