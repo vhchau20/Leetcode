@@ -70,14 +70,13 @@ l7 = [[1,4],[1,4],[1,4],[3,6]]
 l8 = [[1,4],[1,4],[1,4],[1,4],[5,6]]
 l9 = [[1,4],[1,4],[5,6]]
 l10 = [[1,1],[2,6],[3,4],[7,8]]
-
-print(C(l1))
-print(C(l2))
-print(C(l3))
-print(C(l4))
-print(C(l5))
-print(C(l6))
-print(C(l7))
-print(C(l8))
+# print(C(l1))
+# print(C(l2))
+# print(C(l3))
+# print(C(l4))
+# print(C(l5))
+# print(C(l6))
+# print(C(l7))
+# print(C(l8))
 
 # print l1[-1]

@@ -30,33 +30,57 @@ class interval:
 		self.start = start
 		self.end = end
 
+# Does not work
+# Basically find sets of overlapping intervals
 def A(intervals):
 	intervals.sort(key=lambda x:(x[0],x[1]))
-	print intervals
 	g = []
 	i = j = 0
 	while i < len(intervals):
 		j = i+1
 		c = []
+		if j == len(intervals):
+			c.append(intervals[i])
 		while j < len(intervals):
 			first = intervals[i]
 			second = intervals[j]
 			# Case 1 = no overlap
 			if first[1] <= second[0]:
 				pass
-				c.append(first)
+				if not c or c[-1] != first:
+					c.append(first)
+				return c
 			# Case 2 = full overlap
-			if first[1] > second[0] and first[1] > second[1]:
+			elif first[1] > second[0] and first[1] > second[1]:
 				pass
 				c.append(second)
 			# Case 3 = partial overlap
-			if first[1] > second[0] and first[1] < second[1]:
+			elif first[1] > second[0] and first[1] < second[1]:
 				pass
+				if not c or c[-1] != first:
+					c.append(first)
 				c.append(second)
+				i = j
 			j+=1 
 		g.append(c)
 		i+=1
-	return len(g)
+	print g
+	return
+
+
+# Greedy Algo
+# Heuristic: Choose interval with earliest end time
+# O(n)
+# compute the maximum set of non-overlapping intervals and 
+# subtract from number of intervals
+def B(intervals):
+	count = 0
+	time = float('-inf')
+	for i in sorted(intervals,key=lambda x:x[1]):
+		if i[0] >= time:
+			time = i[1]
+			count+=1
+	return len(intervals)-count
 
 
 # a=[[1,2],[1,2],[2,3],[3,4],[1,3]] # = 2
@@ -72,13 +96,27 @@ def A(intervals):
 
 k=[[1,10],[2,3],[4,5],[8,12],[9,14],[15,16]]
 l=[[1,10],[2,3],[4,5],[8,12],[9,14],[13,16],[17,18]] # = 2
+m=[[1,10],[9,12],[11,13]]
+n=[[1,5],[2,3],[4,7],[6,8],[9,10]]
+o=[[1,5],[6,7]]
+p=[[1,2],[1,2],[1,2]]
+
+
 # print A(a)
 # print A(b)
 # print A(c)
 # print A(d)
 # print A(e)
-print A(l)
+# print A(f)
 # print A(g)
 # print A(h)
 # print A(i)
 # print A(j)
+
+# print A(k)
+# print A(l)
+# print A(m)
+# print A(n)
+print B(l)
+
+
