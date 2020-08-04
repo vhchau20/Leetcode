@@ -36,6 +36,8 @@ class TreeNode:
 		self.left = left
 		self.right = right
 
+# Recursively represent each tree as an array using inorder traversal
+# Check if arrays are equal
 def A(p,q):
 	pArr,qArr = [],[]
 	h(p,pArr)
@@ -43,6 +45,8 @@ def A(p,q):
 	pArr = [i.val if i else None for i in pArr]
 	qArr = [i.val if i else None for i in qArr]
 	return pArr==qArr
+
+# Helper
 def h(n,arr):
 	if not n:
 		arr.append(None)
@@ -53,23 +57,21 @@ def h(n,arr):
 	h(n.right,arr)
 
 
+# Represent BT as array
 p1=[1,None,2]
 p2=[1,2]
-
 nodes1=[]
 nodes2=[]
-
 for i in p1:
-	if i != None:
+	if i:
 		nodes1.append(TreeNode(i,None,None))
 	else:
 		nodes1.append(None)
 for i in p2:
-	if i != None:
+	if i:
 		nodes2.append(TreeNode(i,None,None))
 	else:
 		nodes2.append(None)
-
 for i in range(len(nodes1)):
 	if nodes1[i] == None:
 		continue
@@ -77,7 +79,6 @@ for i in range(len(nodes1)):
 		nodes1[i].left = nodes1[2*i+1]
 	if 2*i+2 < len(nodes1):
 		nodes1[i].right = nodes1[2*i+2]
-
 for i in range(len(nodes2)):
 	if nodes2[i] == None:
 		continue

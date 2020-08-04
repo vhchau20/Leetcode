@@ -20,7 +20,7 @@
 # subsequence and not a substring.
 
 import collections as c
-# O(n)
+# n2
 def A(s):
 	sub = ""
 	ret = 0
@@ -29,19 +29,34 @@ def A(s):
 			j = sub.find(s[i])
 			sub = sub[j+1:]
 		sub += s[i]
-		if len(sub) > ret:
-			ret = len(sub)
+		ret = max(ret,len(sub))
 	return ret
 
-# O(n) use enumerate()?
-def B(s):
-	pass
+# n time using LC SOLN using "sliding window (2 pointers)"
+# If using two pointers, use while loop instead of for
+def D(s):
+	ans = 0
+	i,j=0,0
+	d={}
+	while i < len(s) and j < len(s):
+		if s[j] not in d:
+			d[s[j]] = s[j]
+			j+=1
+			ans = max(ans,j-i)
+		else:
+			del d[s[i]]
+			i+=1
+	return ans
 
-str1 = "abcabcbb"
-str2 = "bbbbb"
-str3 = "pwwkew"
-str4 = "pwwkewwkedw"
-str5 = "abcddefghiiijkdlmaop"
-str6 = "dvdf"
+s1 = "abcabcbb"
+s2 = "bbbbb"
+s3 = "pwwkew"
+s4 = "pwwkewwkedw"
+s5 = "abcddefghiiijkdlmaop"
 
-print(A(str5))
+s6 = "dvdfg" #edgy1
+s7 = "wabcadfgbxyz" #edgy2
+s8 = ""
+
+print A(s7)
+print D(s7)

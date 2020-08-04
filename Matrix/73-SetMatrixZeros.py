@@ -54,7 +54,7 @@ def A(matrix):
 
 	return matrix
 
-
+# LC SOLN
 def setZeroes(matrix):
 	MODIFIED = -1000000
 	R = len(matrix)
@@ -73,6 +73,7 @@ def setZeroes(matrix):
 			if matrix[r][c] == MODIFIED:
 				matrix[r][c] = 0
 
+# LC SOLN
 def setZeroes(self, matrix):
 	is_col = False
 	R = len(matrix)

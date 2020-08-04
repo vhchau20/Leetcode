@@ -11,7 +11,7 @@
 # Note:
 # You may assume k is always valid, 1 <= k <= array's length.
 
-# O(nlogn)
+# O(knlogn)
 def findKthLargest(nums, k):
 	nums.sort()
 	ret = None

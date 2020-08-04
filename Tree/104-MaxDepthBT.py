@@ -21,7 +21,7 @@ class TreeNode:
 		self.left = left
 		self.right = right
 
-
+# O(n) but space complexity bad
 def A(root):
 	return max(A(root.left),A(root.right))+1 if root != None else 0
 
@@ -67,7 +67,7 @@ for i in tree:
 for i in range(len(nodes)):
 	if nodes[i] == None:
 		continue
-	if 2*i+2 < len(nodes):
+	if 2*i+1 < len(nodes):
 		nodes[i].left = nodes[2*i+1]
 	if 2*i+2 < len(nodes):
 		nodes[i].right = nodes[2*i+2]

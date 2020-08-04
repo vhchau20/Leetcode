@@ -31,3 +31,6 @@ def B(nums, target):
 
 a = [2, 7, 11, 15, 9, 10]
 print B(a,18)
+
+May 2018 - Present
+Front-End Engineer

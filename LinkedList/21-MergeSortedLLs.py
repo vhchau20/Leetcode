@@ -12,7 +12,7 @@ class node:
 		self.val = val
 		self.next = next
 
-def algo(l1,l2):
+def A(l1,l2):
 	if not l1 and not l2:
 		return []
 	if not l1:
@@ -22,6 +22,8 @@ def algo(l1,l2):
 	l = l1
 	r = l2
 	s = []
+	# Iterate through each LL until we reach length of 
+	# shorter LL
 	while l != None and r != None:
 		if l.val == r.val:
 			s.append(l)
@@ -38,7 +40,7 @@ def algo(l1,l2):
 	while l != None:
 		s.append(l)
 		l = l.next
-	# Append the reest of r
+	# Append the rest of r
 	while r != None:
 		s.append(r)
 		r = r.next
@@ -50,25 +52,19 @@ def algo(l1,l2):
 
 	return s[0]
 
-A=[1,3,5,7,9]
-# A=[1,3,5]
-j = node(A[0])
-s = [j]
-for i in range(1,len(A)):
-	k = node(A[i])
-	s[i-1].next = k
-	s.append(k)
 
-B=[2,4,6,8,10]
-# B=[1,1,4]
-m = node(B[0])
-u = [m]
-for i in range(1,len(B)):
-	k = node(B[i])
-	u[i-1].next = k
-	u.append(k)
+# TESTING
+a=[node(1),3,5,7,9]
+for i in range(1,len(a)):
+	a[i] = node(a[i])
+	a[i-1].next = a[i]
 
-ret = algo(j,m)
-while ret:	
-	print ret.val
-	ret = ret.next
+b=[node(2),4,6,8,10]
+for i in range(1,len(b)):
+	b[i] = node(b[i])
+	b[i-1].next = b[i]
+
+head = A(a[0],b[0])
+while head:	
+	print head.val
+	head = head.next
