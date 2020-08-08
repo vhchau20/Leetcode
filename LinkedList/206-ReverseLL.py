@@ -9,12 +9,6 @@
 # A linked list can be reversed either 
 # iteratively or recursively. Could you implement both?
 
-class node:
-	def __init__(self, val=0, next=None):
-		self.val = val
-		self.next = next
-
-
 # 2pass n using stack
 def A(head):
 	if head == None:
@@ -65,13 +59,8 @@ def C(head):
 	return prev # because curr is None, and prev is the new head (formerly tail)
 
 
-# TESTING
-a=[node(1),2,3,4,5,6,7]
-for i in range(1,len(a)):
-	a[i] = node(a[i])
-	a[i-1].next = a[i]
+from LINK import makeLL, printLL
+a=[1,2,3,4,5,6,7]
+head=makeLL(a)
 
-head = B(a[0])
-while head:
-	print head.val
-	head = head.next
+printLL(A(head))

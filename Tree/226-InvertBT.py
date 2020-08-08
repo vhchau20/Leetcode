@@ -53,31 +53,7 @@ def C(root):
 	return root
 
 
+from TREE import makeTree, printTreeRec
+a=[4,2,7,1,3,6,9]
 
-def makeTree(arr):
-	n = len(arr)
-	treeArr = [0]*n
-	for i in range(n):
-		if arr[i]:
-			treeArr[i] = TreeNode(arr[i],None,None)
-		else:
-			treeArr[i] = None
-	for i in range(n):
-		if not treeArr[i]:
-			continue
-		if 2*i+2 < n:
-			treeArr[i].left = treeArr[2*i+1]
-			treeArr[i].right = treeArr[2*i+2]
-	return treeArr[0]
-
-def printTree(root):
-	if not root:
-		return
-	printTree(root.left)
-	print root.val
-	printTree(root.right)
-
-arr = [4,2,7,1,3,6,9] # [4,7,2,9,6,3,1]
-root = makeTree(arr)
-node = C(root)
-printTree(node)
+printTreeRec(C(makeTree(a)))

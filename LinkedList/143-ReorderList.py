@@ -68,16 +68,12 @@ def A(head):
 	# Return head
 	return head
 
-# Creating list of nodes
-# a=[node(1),2,3,4] # [1,4,2,3]
-a=[node(1),2,3,4,5] # [1,5,2,4,3]
-# a=[node(1),2,3,4,5,6] # [1,6,2,5,3,4]
 
-for i in range(1,len(a)):
-	a[i] = node(a[i])
-	a[i-1].next = a[i]
+# a=[1,2,3,4] # [1,4,2,3]
+# a=[1,2,3,4,5] # [1,5,2,4,3]
+a=[1,2,3,4,5,6] # [1,6,2,5,3,4]
 
-head = A(a[0])
-while head:
-	print head.val
-	head = head.next
+from LINK import makeLL, printLL
+head=makeLL(a)
+head=A(head)
+printLL(head)

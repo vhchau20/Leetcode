@@ -1,40 +1,28 @@
 # Given two binary trees, write a function to check if they are the same or not.
-
 # Two binary trees are considered the same if they are structurally identical 
 # and the nodes have the same value.
 
 # Example 1:
-
 # Input:     1         1
 #           / \       / \
 #          2   3     2   3
-
 #         [1,2,3],   [1,2,3]
-
 # Output: true
-# Example 2:
 
+# Example 2:
 # Input:     1         1
 #           /           \
 #          2             2
-
 #         [1,2],     [1,null,2]
-
 # Output: false
-# Example 3:
 
+# Example 3:
 # Input:     1         1
 #           / \       / \
 #          2   1     1   2
-
 #         [1,2,1],   [1,1,2]
-
 # Output: false
-class TreeNode:
-	def __init__(self, val=0, left=None, right=None):
-		self.val = val
-		self.left = left
-		self.right = right
+
 
 # Recursively represent each tree as an array using inorder traversal
 # Check if arrays are equal
@@ -46,7 +34,6 @@ def A(p,q):
 	qArr = [i.val if i else None for i in qArr]
 	return pArr==qArr
 
-# Helper
 def h(n,arr):
 	if not n:
 		arr.append(None)
@@ -58,36 +45,12 @@ def h(n,arr):
 
 
 # Represent BT as array
-p1=[1,None,2]
-p2=[1,2]
-nodes1=[]
-nodes2=[]
-for i in p1:
-	if i:
-		nodes1.append(TreeNode(i,None,None))
-	else:
-		nodes1.append(None)
-for i in p2:
-	if i:
-		nodes2.append(TreeNode(i,None,None))
-	else:
-		nodes2.append(None)
-for i in range(len(nodes1)):
-	if nodes1[i] == None:
-		continue
-	if 2*i+2 < len(nodes1):
-		nodes1[i].left = nodes1[2*i+1]
-	if 2*i+2 < len(nodes1):
-		nodes1[i].right = nodes1[2*i+2]
-for i in range(len(nodes2)):
-	if nodes2[i] == None:
-		continue
-	if 2*i+2 < len(nodes2):
-		nodes2[i].left = nodes2[2*i+1]
-	if 2*i+2 < len(nodes2):
-		nodes2[i].right = nodes2[2*i+2]
+from TREE import makeTree, printTree
+p1=[1,2,3]
+p2=[1,2,3]
+a=makeTree(p1)
+b=makeTree(p2)
 
-print [i.val if i else None for i in nodes1]
-print [i.val if i else None for i in nodes2]
-print A(nodes1[0],nodes2[0])
+print A(a[0],b[0])
+
 

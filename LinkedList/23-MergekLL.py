@@ -49,21 +49,12 @@ def B(lists):
 	return h
 
 
-# TESTING
-a=[node(1),4,5]
-b=[node(1),3,4]
-c=[node(2),6]
-for i in range(1,len(a)):
-	a[i] = node(a[i])
-	a[i-1].next = a[i]
-for i in range(1,len(b)):
-	b[i] = node(b[i])
-	b[i-1].next = b[i]
-for i in range(1,len(c)):
-	c[i] = node(c[i])
-	c[i-1].next = c[i]
+from LINK import makeLL, printLL
+a=[1,4,5]
+b=[1,3,4]
+c=[2,6]
+headA=makeLL(a)
+headB=makeLL(b)
+headC=makeLL(c)
 
-head = A([a[0],b[0],c[0]])
-while head:
-	print head.val
-	head = head.next
+printLL(A([headA,headB,headC]))

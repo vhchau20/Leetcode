@@ -13,10 +13,6 @@
 # Explanation: There is a cycle in 
 # the linked list, where tail connects to the second node.
 
-class node:
-	def __init__(self, val=0, next=None):
-		self.val = val
-		self.next = next
 
 # n time using map
 # Use map to check if visited
@@ -48,11 +44,12 @@ def B(head):
 	return True
 
 
-# TESTING
-a=[node(3),2,0,-4]
-for i in range(1,len(a)):
-	a[i] = node(a[i])
-	a[i-1].next = a[i]
+from LINK import makeLL,printLL,getTail
+a=[3,2,0,-4]
+head=makeLL(a)
+tail=getTail(head)
 
-a[-1].next = a[1]
-print B(a[0])
+# Make cycle between -4 -> 2
+tail.next = head.next
+
+print B(head)

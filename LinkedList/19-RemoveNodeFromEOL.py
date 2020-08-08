@@ -2,9 +2,7 @@
 # and return its head.
 
 # Example:
-
 # Given linked list: 1->2->3->4->5, and n = 2.
-
 # After removing the second node from the end, the linked list 
 # becomes 1->2->3->5.
 
@@ -14,11 +12,6 @@
 # Follow up:
 # Could you do this in one pass?
 
-
-class node:
-	def __init__(self, val=0, next=None):
-		self.val = val
-		self.next = next
 
 # 2pass n
 def A(head,n):
@@ -86,13 +79,8 @@ def B(head,n):
 	return dummy.next
 
 
-# TESTING
-a=[node(1),2,3,4,5]
-for i in range(1,len(a)):
-	a[i] = node(a[i])
-	a[i-1].next = a[i]
+from LINK import makeLL, printLL
+a=[1,2,3,4,5]
+head=makeLL(a)
+printLL(A(head,2))
 
-head = B(a[0],2)
-while head:
-	print head.val
-	head = head.next

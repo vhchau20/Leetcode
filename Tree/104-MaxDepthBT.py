@@ -56,20 +56,9 @@ def C(root):
 			stack.append((root.left,leng+1)) 
 	return depth
 
-tree = [3,9,20,None,None,15,7]
-tree = [3,None,20,None,None,None,7]
-nodes = []
-for i in tree:
-	if i != None:
-		nodes.append(TreeNode(i,None,None))
-	else:
-		nodes.append(None)
-for i in range(len(nodes)):
-	if nodes[i] == None:
-		continue
-	if 2*i+1 < len(nodes):
-		nodes[i].left = nodes[2*i+1]
-	if 2*i+2 < len(nodes):
-		nodes[i].right = nodes[2*i+2]
+from TREE import makeTree
+a=[3,9,20,None,None,15,7]
+b=[3,None,20,None,None,None,7]
 
-print A(nodes[0])
+print A(makeTree(a))
+print A(makeTree(b))

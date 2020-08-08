@@ -53,18 +53,10 @@ def A(l1,l2):
 	return s[0]
 
 
-# TESTING
-a=[node(1),3,5,7,9]
-for i in range(1,len(a)):
-	a[i] = node(a[i])
-	a[i-1].next = a[i]
+from LINK import makeLL, printLL
+a=[1,3,5,7,9]
+b=[2,4,6,8,10]
+headA=makeLL(a)
+headB=makeLL(b)
 
-b=[node(2),4,6,8,10]
-for i in range(1,len(b)):
-	b[i] = node(b[i])
-	b[i-1].next = b[i]
-
-head = A(a[0],b[0])
-while head:	
-	print head.val
-	head = head.next
+printLL(A(headA,headB))
